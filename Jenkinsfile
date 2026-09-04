@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright:v1.52.0-jammy'
-            args '-u root:root'
-        }
-    }
+    agent any
 
     environment {
         CI = 'true'
@@ -13,10 +8,12 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                echo '=== Installing Node Dependencies ==='
-                sh 'npm ci || npm install'
+                echo '=== Installing Node Dependencies and Playwright Browsers ==='
+                sh 'npm install'
+                sh 'npx playwright install --with-deps chromium'
             }
         }
+
 
         stage('Run Playwright Tests') {
             steps {
