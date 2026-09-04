@@ -1,8 +1,23 @@
 
-# Playwright
+# Dependencies
 node_modules/
+
+# Playwright output artifacts
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Downloaded PDFs — do not commit test artefacts
+downloads/
+
+# Environment variables — never commit secrets
+.env
+
+# Scratch / debug scripts
+test-pdf.cjs
+
+# Allure test results and reports
+allure-results/
+allure-report/
